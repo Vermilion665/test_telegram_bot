@@ -1,3 +1,8 @@
+import requests                        
+from bs4 import BeautifulSoup           
+from fake_useragent import UserAgent    
+
+
 def get_weather_spb() -> list:
     ua = UserAgent()
     URL: str = 'https://world-weather.ru/pogoda/russia/saint_petersburg/7days/'
