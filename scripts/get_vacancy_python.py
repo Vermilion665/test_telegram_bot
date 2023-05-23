@@ -1,6 +1,7 @@
 import requests
 from random import randint, sample
 
+
 def get_random_vacancy():
     URL: str = 'https://api.hh.ru/vacancies?'
 
@@ -40,8 +41,8 @@ def get_random_vacancy():
                         }
   
         list_of_data_vacancy.append(data_vacancy.copy())
-
-
     return list_of_data_vacancy
 
-print(get_random_vacancy())
+
+if __name__ == '__main__':
+    print(get_random_vacancy())
