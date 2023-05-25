@@ -23,6 +23,18 @@ async def process_start_command(message: Message):
 async def process_help_command(message: Message):
     await message.answer('Напиши мне что-нибудь и в ответ я пришлю тебе твое сообщение')
 
+
+@dp.message(Command(commands=['weather']))
+async def process_weather_command(message: Message):
+    weather = get_weather_spb()
+    date = weather[0] + '\n'
+    night = f'\n{weather[1]["weather_day"]} {weather[1]["temperature"]}, {weather[1]["tooltip"]}'
+    morning = f'\n{weather[2]["weather_day"]} {weather[2]["temperature"]}, {weather[2]["tooltip"]}'
+    day = f'\n{weather[3]["weather_day"]} {weather[3]["temperature"]}, {weather[3]["tooltip"]}'
+    evening = f'\n{weather[4]["weather_day"]} {weather[4]["temperature"]}, {weather[4]["tooltip"]}'
+
+    await message.answer(date+night+morning+day+evening)
+
 # Этот хэндлер будет срабатывать на отправку боту фото
 @dp.message(F.photo)
 async def send_photo_echo(message: Message):
